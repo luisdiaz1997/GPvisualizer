@@ -16,14 +16,19 @@ const kernels = [
     equation: "k(x, x') = \\sigma^2 \\exp\\left(-\\frac{\\|x-x'\\|^2}{2\\ell^2}\\right)"
   },
   {
-    key: 'matern12',
-    name: 'Matérn 1/2',
-    equation: "k(x, x') = \\sigma^2 \\exp\\left(-\\frac{|x-x'|}{\\ell}\\right)"
+    key: 'matern52',
+    name: 'Matérn 5/2',
+    equation: "k(x, x') = \\sigma^2 (1 + \\sqrt{5}r + \\frac{5r^2}{3}) \\exp(-\\sqrt{5}r)"
   },
   {
     key: 'matern32',
     name: 'Matérn 3/2',
     equation: "k(x, x') = \\sigma^2 (1 + \\sqrt{3}r) \\exp(-\\sqrt{3}r)"
+  },
+  {
+    key: 'matern12',
+    name: 'Matérn 1/2',
+    equation: "k(x, x') = \\sigma^2 \\exp\\left(-\\frac{|x-x'|}{\\ell}\\right)"
   },
 ];
 

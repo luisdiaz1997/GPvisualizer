@@ -100,19 +100,19 @@ export const KERNELS = {
         fn: rbf,
         description: 'Infinitely differentiable, very smooth'
     },
-    matern12: {
-        name: 'Matérn 1/2 (Exponential)',
-        fn: matern12,
-        description: 'Continuous but rough, not differentiable'
+    matern52: {
+        name: 'Matérn 5/2',
+        fn: matern52,
+        description: 'Twice differentiable, fairly smooth'
     },
     matern32: {
         name: 'Matérn 3/2',
         fn: matern32,
         description: 'Once differentiable, moderately smooth'
     },
-    matern52: {
-        name: 'Matérn 5/2',
-        fn: matern52,
-        description: 'Twice differentiable, fairly smooth'
+    matern12: {
+        name: 'Matérn 1/2 (Exponential)',
+        fn: matern12,
+        description: 'Continuous but rough, not differentiable'
     }
 };

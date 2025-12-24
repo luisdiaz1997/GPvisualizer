@@ -15,13 +15,14 @@ import {
     randn,
 } from './gp_utilities';
 
-import { rbf, matern12, matern32 } from './kernels';
+import { rbf, matern12, matern32, matern52 } from './kernels';
 
 // Kernel function lookup
 const KERNEL_FNS = {
     rbf,
     matern12,
     matern32,
+    matern52,
 };
 
 /**
