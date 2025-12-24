@@ -86,28 +86,7 @@ function selectKernel(key) {
 </template>
 
 <style scoped>
-.panel {
-  background: #12121a;
-  border-radius: 16px;
-  border: 1px solid #1e1e2e;
-  overflow: hidden;
-}
-
-.panel-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #1e1e2e;
-  background: #0d0d12;
-}
-
-.panel-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-}
-
-.panel-content {
-  padding: 20px;
-}
+/* Panel styles moved to assets/css/components.css */
 
 .control-group {
   margin-bottom: 24px;
