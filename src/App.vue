@@ -3,14 +3,15 @@ import { reactive, computed, ref } from 'vue';
 import GPCanvas from '@/components/GPCanvas.vue';
 import KernelParameters from '@/components/KernelParameters.vue';
 import ActionsPanel from '@/components/ActionsPanel.vue';
-import { sampleFromGP, linspace } from '@/utils/gp';
 
-// Bounds for coordinates
+// Canvas ref to call sampleGP method
+const canvasRef = ref(null);
+
+// Bounds for coordinates (for random point generation)
 const bounds = { xMin: -3, xMax: 3, yMin: -2, yMax: 2 };
 
 // Reactive state
 const points = reactive([]);
-const samples = reactive([]);
 const selectedKernel = ref('rbf');
 
 const params = reactive([
@@ -30,7 +31,6 @@ const gpParams = computed(() => ({
 // Event handlers
 function addPoint(point) {
   points.push(point);
-  samples.length = 0;
 }
 
 function addRandomPoints() {
@@ -39,19 +39,14 @@ function addRandomPoints() {
     const y = bounds.yMin + Math.random() * (bounds.yMax - bounds.yMin);
     points.push({ x, y });
   }
-  samples.length = 0;
 }
 
 function sampleGP() {
-  const sampleX = linspace(bounds.xMin, bounds.xMax, 150);
-  const sampleY = sampleFromGP(points, sampleX, gpParams.value);
-  samples.push({ x: sampleX, y: sampleY });
-  if (samples.length > 5) samples.shift();
+  canvasRef.value?.sampleGP();
 }
 
 function clearAll() {
   points.length = 0;
-  samples.length = 0;
 }
 
 function updateParamValue(index, value) {
@@ -60,7 +55,6 @@ function updateParamValue(index, value) {
 
 function updateKernel(kernel) {
   selectedKernel.value = kernel;
-  samples.length = 0;
 }
 </script>
 
@@ -77,8 +71,8 @@ function updateKernel(kernel) {
     <div class="main-grid">
       <div class="canvas-area">
         <GPCanvas
+          ref="canvasRef"
           :points="points"
-          :samples="samples"
           :params="gpParams"
           @add-point="addPoint"
         />
